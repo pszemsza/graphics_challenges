@@ -90,6 +90,22 @@ Example result when drawing a cube (note that it looks like a square, not like a
 ![screenshot_000073](https://github.com/pszemsza/graphics_challenges/assets/65168262/6f6974ef-2e94-4db1-b6eb-8a2ba6cd4706)
 
 
-## Step 3. Adding rotation and translation
+## Step 3. Rotation and translation
+
+Keywords: _vector_, _matrix_, _matrix-vector multiplication_, _matrix-matrix multiplication_, _matrix transformations_,  _rotation matrix_, _translation matrix_, _orthogonal projection matrix_
+
+In this step we will add some dynamism to our scene by making the objects rotate. For this we will need some basic algebra - matrix multiplication by matrix and vector. There are probably some existing libraries for doing this in your language which you can choose, but you are also free to implement them by yourself if you want to have a better understanding of what is going on.
+
+The general principle here is that you represent your vertices as 4D vectors, and then transform them by multiplying by a special 4x4 matrix, which we call a transformation matrix. Two typical examples are translation and rotation matrices. For example, multipliyng a vector by a 30-degree Y-axis rotation matrix will give you a vector representing your point after, you guessed it, rotation by 30 degrees around the Y axis. 
+
+Why do we need 4 dimensions, when our objects are 3D? In fact, 3x3 matrics would be sufficient for rotation (and some other operations, like scaling), but we need 4 dimensions to make a translation matrix. This may seem a bit counterintuitive at first - translation is a trivial operation, why would you need to use a matrix transformation for this? The reason is that by using matrices for all transformations we can chain transformations together easily. Because A(Bv) is the same as (AB)v, we can represent a series of transformations (e.g. translation, rotation around the X axis, rotation around the Z axis, scaling, translation) with a single matrix. It also makes the translation look much cooler.
+
+Ok, let's rotate some objects! 
+Transformations may be a bit tricky if you never used them, so I suggest to start with small steps. First you should modify your objects so that vertices are represented by 4D vectors. Then, create a rotation matrix for a small angle around the Z axis. Each animation frame multiply all vertices of your object by the matrix, and draw your object as earlier. Voilà! You should see your object rotating, except it might not be moving the way you would expect.
+
+_Common pitfall_: Note that the rotation matrix rotates the points around the global coordinate system axis. Thus, if your object is located far away from your global coordinate system center it might be orbiting around the (0, 0) pixel (and at times disappear from the screen) rather than around the object's center, as you could expect. To make the object rotate around its center you need first to move it to the center of your global coordinate system (simply use the translation transformation with negative of the object's center), rotate it, and then move it back to where it was originally.
+
+_Common pitfall 2_: Order of transformations matters. Translation followed by a rotation usually yield a different result than a rotation followed by a translation. If your object's movement seems weird double check that you chain the transformations are in a correct order.
+
 
 ## Step 4. Drawing filled triangles
