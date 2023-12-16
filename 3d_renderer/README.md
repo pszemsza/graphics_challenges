@@ -64,3 +64,32 @@ You can also make the lines move around the screen or react to the mouse moves.
 
 Line drawing is such a fundamental problem that a lot of research went into it. See e.g. the
 [Line drawing algorithms](https://en.wikipedia.org/wiki/Line_drawing_algorithm) wikipedia page or just google around if you are interested.
+
+
+## Step 2. Drawing an object
+
+In this step we will create and render some objects as a wireframe. Typically objects in 3D graphics are represented as sets of triangles. Why triangles and not other polygons, like quads? Well, triangles are the simplest 2D polygons and they are always convex, which makes them the easiest to work with.
+
+I suggest to start with a simple object, like a cube or tetrahedron. First, you will need a data structure to store all the triangles representing your object. In the simplest approach you could just keep some sort of a list of individual triangles. But, you will quickly notice that every vertex (a 3D point) of your object is shared by multiple triangles. Can we optimize this so that we don't have duplicated vertices?
+
+<details>
+  <summary>Hint</summary>
+  Typically the objects are represented as a list of vertices and a list of vertex indices triples. For example, you could represent a 2D square like this:
+
+```
+vertices = [[0, 0], [10, 0], [10, 10], [0, 10]]
+indices = [[0, 1, 2], [0, 2, 3]]
+```
+
+</details>
+
+To draw an object simply iterate over all the triangles and draw them one by one. There is just one problem - our vertices are 3D points, and our screens (and line drawing function that we created in Step 1) are 2D. Hence, we need a way to _project_ (or convert) our 3D points into 2D pixels. This is usually done with a _projection matrix_, but for now I suggest to keep it simple and use a no-math-required approach: just ignore the 3rd dimension, so that a point (x, y, z) will be represented by a pixel (x, y).
+
+Example result when drawing a cube (note that it looks like a square, not like a cube - this is because we ignored the 3rd dimension, effectively flattening the object and losing the perspective): 
+
+![screenshot_000073](https://github.com/pszemsza/graphics_challenges/assets/65168262/6f6974ef-2e94-4db1-b6eb-8a2ba6cd4706)
+
+
+## Step 3. Adding rotation and translation
+
+## Step 4. Drawing filled triangles
