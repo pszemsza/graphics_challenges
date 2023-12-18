@@ -107,5 +107,17 @@ _Common pitfall_: Note that the rotation matrix rotates the points around the gl
 
 _Common pitfall 2_: Order of transformations matters. Translation followed by a rotation usually yield a different result than a rotation followed by a translation. If your object's movement seems weird double check that you chain the transformations are in a correct order.
 
+Finally, given that you already have the matrix multiplication implemented we can now use a proper projection matrix. The equivalent of the "ignore the 3rd dimension" trick is an orthogonal projection. You should be able to figure out the form of the corresponding matrix, but you are always free to just look it up. In one of the future steps we will introduce a perspective projection which will give our objects more realistic look.
+
+<details>
+  <summary>Hint 1</summary>
+  Remember that you all you need to do is to zero the Z-coordinate, without changing the other coordinates.
+</details>
+
+
+<details>
+  <summary>Hint 2</summary>
+  In our case this will be a diagonal matrix.
+</details>
 
 ## Step 4. Drawing filled triangles
