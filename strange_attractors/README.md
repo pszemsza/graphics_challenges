@@ -41,8 +41,29 @@ The table below shows how the rendering changes with the increasing number of it
 
 # Step 2. Changing parameters in real time
 Keywords: _drag'n'drop_
+
 You should be able to get an attractor drawn for specific parameters. To make it easy to explore different shapes yielded by different parameters it will be helpful to be able to modify the params in real time. It would be quite easy to use keyboard or sliders, so we will do something else instead. We will represent a pair of parameters (a, b) using a draggable circle centered at the point (x, y), so that the parameter _a_ (_b_) will be encoded using the _x_ (_y_) coordinate. This will allow us to modify 2 parameters at the same time, and it will make it a bit easier to visualize the change of parameters in time, which we will add in the following steps. Of course, you will need multiple circles to represent your parameters if you have more than 2. Remember to clean your screen after any parameter change. 
 
 Just to note, as in the previous step, you will need to map values from the pixel coordinates to the parameter space.
 
 ![screenshot_000173](https://github.com/pszemsza/graphics_challenges/assets/65168262/0244a7a6-c5b0-4e59-ae61-ebd99ff1a017)
+
+# Step 3. Adding colors
+Keywords: _HSV color model_
+
+Let's add a few different color modes. For a solid color, let's do black-on-white, white-on-black and color-on-black. How can we add more colors? One idea is to use a point "velocity", defined as a distance between the current and previous (x, y) coordinates. This will give you a scalar that can be easily translated into a colorful gradient using the HSV color model.
+
+<table>
+  <tr>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/e720cb06-2bbb-418e-9bc4-47373f25439c" width=200px height=200px></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/09a172ef-01fa-47dd-823e-533f30f030dd" width=200px height=200px></td>
+
+  </tr> 
+  <tr>    
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/c687752e-7564-4d64-a993-46b8d4fa1800" width=200px height=200px></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/3b4fca40-76d0-493e-8012-1cd63e93a66b" width=200px height=200px></td>
+
+  </tr> 
+</table>
+
+
