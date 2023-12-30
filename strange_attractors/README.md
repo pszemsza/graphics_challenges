@@ -45,5 +45,4 @@ You should be able to get an attractor drawn for specific parameters. To make it
 
 Just to note, as in the previous step, you will need to map values from the pixel coordinates to the parameter space.
 
-![screenshot_000611](https://github.com/pszemsza/graphics_challenges/assets/65168262/d29a625f-b664-4961-a7ea-37305b293379)
-
+![screenshot_000173](https://github.com/pszemsza/graphics_challenges/assets/65168262/0244a7a6-c5b0-4e59-ae61-ebd99ff1a017)
