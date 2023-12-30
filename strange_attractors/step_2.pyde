@@ -31,7 +31,7 @@ def setup():
 
 def draw():
     global x, y
-    stroke(0)
+    stroke(0, 30)
     for _ in range(STEPS_PER_FRAME):
         nx = params[0] * math.sin(params[1]*y) + params[2] * math.cos(params[3]*x)
         ny = math.sin(params[4]*x) - params[5] * math.cos(y)
