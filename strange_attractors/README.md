@@ -1,14 +1,17 @@
 
 I suggest to start with a simple attractor with the general form:
 
-$x = a * sin(b*y) + c * cos(d*x)$
+$`x' = a * sin(b*y) + c * cos(d*x)`$
 
-$y = a * sin(b*x) + c * cos(d*y)$
+$`y' = a * sin(b*x) + c * cos(d*y)`$
 
 where $a$, $b$, $c$, and $d$ are constant parameters.
 
-# Step 1
-To draw the attractor you start with a random point $(x, y)$. In every iteration you put a pixel at the (x, y) point, and calculate new coordinates using the attractor equation.
+# Step 1. Drawing a simple attractor
+Keywords: _strange attractors_
+
+To draw the attractor you will draw pixels one by one. You start with a random (x, y) point, and calculate new coordinates (x', y') using the attractor equation.
+
 There is a couple of practical considerations before we start implementing this simple algorithm.
 
 First, how to choose the parameter values? Unfortunately, not all values will yield a nice looking attractor. In the next step we will make it easier to explore the parameter
@@ -16,10 +19,9 @@ space and find good parameters; for now you can use a=1.19, b=1.195, c=1.4, d=1.
 we are working with attractors, so our points should eventually converge. Just note that some values (e.g. (0, 0) or (1, 1)) will yield degenerative solution. But as long
 as $x\neq y$ you should be good. Of course, you can just randomize the starting values.
 
-Secondly, we need to map between our attractor (x, y) values and the rendering window coordinates. Our (x, y) values would be approximately in the (-2, 2) range, so you should
-ensure that values from this range will be visible in your window.
+Secondly, we need to map between our attractor (x, y) values and the rendering window coordinates. Our (x, y) values would be approximately in the (-2, 2) range, so you should ensure that values from this range will be visible in your window.
 
-Lastly, getting a clearly visible attractor pattern may require at least thousands of points to be drawn. Thus, I suggest to draw O(100s) points in every frame - significantly fewer
+Lastly, getting a clearly visible attractor pattern may require thousands of points to be drawn. Thus, I suggest to draw O(100s) points in every frame - significantly fewer
 than that and it will take a long time for the attractor to become clear, significantly more - and it may become oversatured quickly.
 
 The table below shows how the rendering changes with the increasing number of iterations.
@@ -36,3 +38,12 @@ The table below shows how the rendering changes with the increasing number of it
     <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/bcde8c47-8398-40e4-8735-78ee3d05561b" width=200px height=200px></td>
   </tr> 
 </table>
+
+# Step 2. Changing parameters in real time
+Keywords: _drag'n'drop_
+You should be able to get an attractor drawn for specific parameters. To make it easy to explore different shapes yielded by different parameters it will be helpful to be able to modify the params in real time. It would be quite easy to use keyboard or sliders, so we will do something else instead. We will represent a pair of parameters (a, b) using a draggable circle centered at the point (x, y), so that the parameter _a_ (_b_) will be encoded using the _x_ (_y_) coordinate. This will allow us to modify 2 parameters at the same time, and it will make it a bit easier to visualize the change of parameters in time, which we will add in the following steps. Of course, you will need multiple circles to represent your parameters if you have more than 2. Remember to clean your screen after any parameter change. 
+
+Just to note, as in the previous step, you will need to map values from the pixel coordinates to the parameter space.
+
+![screenshot_000611](https://github.com/pszemsza/graphics_challenges/assets/65168262/d29a625f-b664-4961-a7ea-37305b293379)
+
