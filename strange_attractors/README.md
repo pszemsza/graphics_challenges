@@ -66,4 +66,21 @@ Let's add a few different color modes. For a solid color, let's do black-on-whit
   </tr> 
 </table>
 
+# Step 4. Animation - smooth parameters change
+Keywords: _Bezier curve_, _spline curve_, _C1 continuity_
+
+We are able now to generate good looking static images. Our next step will be to make a smooth animation, in which we will render a series of attractors with small parameter changes and then combine individual images to form a video. In this step we will work on a smooth parameters change. The simplest idea would be to change each param by a small constant value. The problem is that eventually the parameters will grow large (in absolute terms), which typically yields less interesting attractors. Ideally, we would want the paramaters to smoothly change in a "reasonable" range. Another idea would be to express parameters as a function of time - for example, one parameter could be defined as $a=1.7sin(t/20)$, where $t$ could be a number of elapsed seconds/minutes, or the number of a current frame. While this would give us smooth and bounded parameters, it doesn't give us that much control.
+
+A solution to this might be to use geometrical shapes such as Bezier curves. Shortly, the curve is defined by a number of points (the exact number is dependent on the curve order; I suggest to use cubic curves which are defined by 4 points). The curve starts at the first point and ends at the last one, with the intermediate points serving as a kind of magnets that shape the curve. Each point on the curve can be calculated using a simple formula which depends only on the points themselves and a single parameter $t$. In the previous step we used a circle to represent a pair of parameters. Now we can extend this idea - for example, if your attractor has 8 parameters you could define 4 2D Bezier curves, or just a single 8-dimensional curve (and to visualize it you could simply display 4 circles representing pairs of coordinates: $`(x_1, x_2), ..., (x_7, x_8)`$).
+
+Note: for this step I suggest to start a new sketch instead of expanding the code from the previous step, especially if you haven't worked with Bezier curves before. It will make things simpler, as you will only need to think about the curves, and it will make implementation and debugging easier.
+
+So, let's get to work. First you'd define your curve(s). I suggest to display the control points and lines connecting them, and outline the curve itself (e.g. calculate and draw the points for $`t=0.0, 0.05, 0.1, ..., 0.95, 1.0`$). Once you have this, you may want to animate a point sliding along the curve (i.e. draw a point at $`t=0.0`$ in the first frame, at  $`t=0.002`$ in the second etc.). We should also allow the curve to "continue" after we reach its end, i.e. when $`t>1.0`$. For this, we can simply generate new control points and repeat the whole procedure. An important consideration here is the geometric continuity - you should use the last point of the old curve as the first point of the new one, otherwise you will have a sudden jump to an entirely different position. But even with this the transition between the 2 curves won't be entirely smooth, as you are most likely to have a sharp change of direction. To combat this you may use one of the properties of the Bezier curves: a curve defined by points $`P_1, P_2, P_3, P_4`$ is tangent to the line $`(P_3, P_4)`$ at the point $`P_4`$. Now, you want your new curve to be tangent to the same line at the new point $`P'_1`$. For this, you can simply reflect $`P_3`$ over $`P_4`$ and use it as $`P'_2`$. Formally, you can say that the first derrivative of your curve is now continuous, which gives you a C1 continuity. The other points can be completely random.
+
+And voilà! You now should be able to generate an infinite smooth curve!
+
+
+
+
+
 
