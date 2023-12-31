@@ -96,3 +96,12 @@ https://github.com/pszemsza/graphics_challenges/assets/65168262/1947e678-3c7b-48
 The last thing to do is to expand your curve to as many dimensions as you have parameters (or simply use multiple 2D curves). At this point the visualization might get somewhat crowded. This is an example of what it might look like with 6 parameters:
 
 https://github.com/pszemsza/graphics_challenges/assets/65168262/d8fbe5d9-174b-4265-927d-c3c6c4763b82
+
+Step 5. Putting it all together
+
+Now it is time to combine our single frame drawing with smooth parameter change. 
+
+https://github.com/pszemsza/graphics_challenges/assets/65168262/b62e9d15-6712-488f-bfca-251a4f89a839
+
+
+
