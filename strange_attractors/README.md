@@ -79,8 +79,8 @@ So, let's get to work. First you'd define your curve(s). I suggest to display th
 
 And voilà! You now should be able to generate an infinite smooth curve!
 
+https://github.com/pszemsza/graphics_challenges/assets/65168262/1947e678-3c7b-485b-baf9-bfe133b0b1ff
 
+The last thing to do is to expand your curve to as many dimensions as you have parameters (or simply use multiple 2D curves). At this point the visualization might get somewhat crowded. This is an example of what it might look like with 6 parameters:
 
-
-
-
+https://github.com/pszemsza/graphics_challenges/assets/65168262/d8fbe5d9-174b-4265-927d-c3c6c4763b82
