@@ -7,6 +7,7 @@ $`y' = a * sin(b*x) + c * cos(d*y)`$
 
 where $a$, $b$, $c$, and $d$ are constant parameters.
 
+<br/><br/>
 # Step 1. Drawing a simple attractor
 Keywords: _strange attractors_
 
@@ -39,6 +40,7 @@ The table below shows how the rendering changes with the increasing number of it
   </tr> 
 </table>
 
+<br/><br/>
 # Step 2. Changing parameters in real time
 Keywords: _drag'n'drop_
 
@@ -48,6 +50,7 @@ Just to note, as in the previous step, you will need to map values from the pixe
 
 ![screenshot_000173](https://github.com/pszemsza/graphics_challenges/assets/65168262/0244a7a6-c5b0-4e59-ae61-ebd99ff1a017)
 
+<br/><br/>
 # Step 3. Adding colors
 Keywords: _HSV color model_
 
@@ -66,6 +69,7 @@ Let's add a few different color modes. For a solid color, let's do black-on-whit
   </tr> 
 </table>
 
+<br/><br/>
 # Step 4. Animation - smooth parameters change
 Keywords: _Bezier curve_, _spline curve_, _C1 continuity_
 
@@ -89,19 +93,25 @@ We should also allow the curve to "continue" after we reach its end, i.e. when $
   </tr> 
 </table>
 
+<br/>
+
 And voilà! You now should be able to generate an infinite smooth curve!
+<br/>
 
 https://github.com/pszemsza/graphics_challenges/assets/65168262/1947e678-3c7b-485b-baf9-bfe133b0b1ff
 
+<br/>
 The last thing to do is to expand your curve to as many dimensions as you have parameters (or simply use multiple 2D curves). At this point the visualization might get somewhat crowded. This is an example of what it might look like with 6 parameters:
 
 https://github.com/pszemsza/graphics_challenges/assets/65168262/d8fbe5d9-174b-4265-927d-c3c6c4763b82
 
-Step 5. Putting it all together
+<br/><br/>
+# Step 5. Putting it all together
 
 Now it is time to combine our single frame drawing with smooth parameter change. 
 
+If you are feeling lucky you may use randomized control points, but you are risking getting degenerated attractors for some of the parameters, resulting in a not-that-attractive animation. A better idea might be to provide a series of fixed parameter sets that will guide the animation (you can obtain them by playing with your code from the Step 3 and writing down the parameter values for which you get a nice drawing). You could provide all control points in the successive Bezier curves (which would give you a total control, but would require more work), or just the first and the last ones, randomizing the intermediate ones. In the latter solution you may want to generate random points that are not too far from the end points so that you will obtain a smooth, gently curved line, instead of a "loopy" one.
+
+I suggest to use a "dev" mode, in which you significantly reduce the number of iterations per frame, increase $t$ parameter changes and use a smaller resultion. This will allow you to quickly generate a preview of the animation. Once you are satisfied with the results you can readjust the values to get a high quality animation.
+
 https://github.com/pszemsza/graphics_challenges/assets/65168262/b62e9d15-6712-488f-bfca-251a4f89a839
-
-
-
