@@ -8,7 +8,8 @@ Let's start with drawing a single boid. In principle you can use any shape, but 
 
 Make sure to consider boid's rotation when drawing!
 
-<br/>
+<br/>![screenshot_0049](https://github.com/pszemsza/graphics_challenges/assets/65168262/f432d2f0-98af-4403-9712-a31583208dc1)
+
 
 # Step 2. Basic movement
 Keywords: _screen wrap_
@@ -21,11 +22,21 @@ In the following steps we will make a heavy use of vectors, so the former option
 
 To keep things simple I suggest to use a wrapped screen for now. This means that e.g. when your boid moves over the right edge of the screen it will reappear on the left side.
 
+
+https://github.com/pszemsza/graphics_challenges/assets/65168262/dfa38df3-140b-4cd9-ae56-493ee2f154dd
+
+
 <br/>
 
 # Step 3. Flock
 
 Now it is time to create a whole flock. We can use the same code as before, except we want to have multiple boids.
+
+
+
+https://github.com/pszemsza/graphics_challenges/assets/65168262/5ab522bb-95ea-496c-a198-4cd590011925
+
+
 
 <br/>
 
@@ -46,6 +57,12 @@ You can treat these 3 components as velocities. For example, you can convert nei
 
 At this stage it might also be a good idea to clamp the speed to a predefined range (or to add an upper bound, at least). This will prevent boids from changing the direction too rapidly, and should yield a smoother movement.
 
+
+
+https://github.com/pszemsza/graphics_challenges/assets/65168262/994912ae-8766-4561-a8ec-2b9d6e3ae434
+
+
+
 <br/>
 
 # Step 5. Walls
@@ -53,6 +70,12 @@ At this stage it might also be a good idea to clamp the speed to a predefined ra
 If your boids still use wrapped screen you may observe a weird behavior when a part of the flock moves over the screen edge. While boids on both sides of the screen visually still form a single flock, they are actually outside of each other visual range. Thus, there is a chance that a part of the flock will change the direction before passing the screen edge, and effectively will split from their group. Alternatively, it might happen that a single boid will pass the screen's edge only to fly right into a middle of a peacefully cruising dense flock on the other side, starting a separation rule violation chain reaction.
 
 This might be fine for you, in which case you can feel free to skip this step. Otherwise, let's add an additional boid's rule - screen edge avoidance.
+
+
+
+
+https://github.com/pszemsza/graphics_challenges/assets/65168262/cfb2d862-78b0-4ebf-971c-72d36c51c301
+
 
 
 <br/>
@@ -74,6 +97,17 @@ At this stage we have basically replicated the core boids algorithm. Now we can 
   Behavior for prey should be rather obvious - they should try to move away from the spotted predators. Thus, this is basically the same as a separation rule for boids, except you may want to give it a higher weight.
 </details>
 
+
+
+https://github.com/pszemsza/graphics_challenges/assets/65168262/f5ee5ecc-49e9-4e40-a2b8-721f8643cbc7
+
+
+
 <br/>
 
 # Step 7. Final touches
+
+
+https://github.com/pszemsza/graphics_challenges/assets/65168262/3574b799-3400-46e1-b62c-3a92b9a0527a
+
+
