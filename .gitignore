@@ -1,3 +1,5 @@
+sketch.properties
+*.png
 .DS_Store
 applet
 application.linux-arm64
