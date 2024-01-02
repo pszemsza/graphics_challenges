@@ -90,50 +90,52 @@ def mousePressed():
     
 def keyPressed():
     global factor_separation, factor_alignment, factor_cohesion, factor_edge, factor_predator, factor_hunt, range_visibility, range_separation
-    
+    sc = 1.05
     if key == 'q':
-        factor_separation *= 1.1
+        factor_separation *= sc
     if key == 'a':
-        factor_separation *= 0.9
+        factor_separation /= sc
         
     if key == 'w':
-        factor_alignment *= 1.1
+        factor_alignment *= sc
     if key == 's':
-        factor_alignment *= 0.9
+        factor_alignment /= sc
         
     if key == 'e':
-        factor_cohesion *= 1.1
+        factor_cohesion *= sc
     if key == 'd':
-        factor_cohesion *= 0.9
+        factor_cohesion /= sc
         
     if key == 'r':
-        factor_edge *= 1.1
+        factor_edge *= sc
     if key == 'f':
-        factor_edge *= 0.9
+        factor_edge /= sc
         
     if key == 't':
-        factor_predator *= 1.1
+        factor_predator *= sc
     if key == 'g':
-        factor_predator *= 0.9
-        
-    if key == 'y':
-        factor_hunt *= 1.1
-    if key == 'h':
-        factor_hunt *= 0.9
+        factor_predator /= sc 
 
+    if key == 'y':
+        factor_hunt *= sc
+    if key == 'h':
+        factor_hunt /= sc 
+        
     if key == 'u':
-        range_visibility *= 1.1
+        factor_separation_predator *= sc
     if key == 'j':
-        range_visibility *= 0.9
-        
+        factor_separation_predator /= sc
+
     if key == 'i':
-        range_separation *= 1.1
+        range_visibility *= sc
     if key == 'k':
-        range_separation *= 0.9
+        range_visibility /= sc 
         
-        
-        
-        
+    if key == 'o':
+        range_separation *= sc
+    if key == 'l':
+        range_separation /= sc 
+
 
 class Boid:
     def __init__(self, ind, x, y, alpha):
