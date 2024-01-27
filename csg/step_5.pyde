@@ -4,7 +4,7 @@ import intervals
 
 
 rx = 7.0
-pixel_size = 16
+pixel_size = 4
 
 ray_dir = PVector(0, 0, 1)
 
@@ -70,7 +70,6 @@ def calculate_lighting(scene, obj, pt, pt_normal, ray_origin):
             # unknown light type
             continue
         
-        #print(v_light)
         v_light.normalize()
         diffuse_intensity = pt_normal.dot(v_light)
         if diffuse_intensity > 0.0:
@@ -143,10 +142,6 @@ def raycast_scene(scene, r_origin):
     return obj, ray_intersections.ivs[0].a
  
 
-def mousePressed():
-    saveFrame('screenshot_####.png')
-
-
 def ray_sphere_intersection(r_origin, r_dir, s_center, s_r, ind):
     L = s_center - r_origin
     tc = L.dot(r_dir)
@@ -187,5 +182,3 @@ def keyPressed():
         pixel_size = 32
         
     redraw = True
-    
-    

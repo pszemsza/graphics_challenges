@@ -1,6 +1,3 @@
-# cube
-#Hollowed out cube with rounded off edges.
-
 import json
 import math
 import intervals
@@ -29,7 +26,7 @@ def setup():
     colorMode(RGB, 1, 1, 1)
     size(400, 400)
     noStroke()
-    scene = load_scene('scene_step7.json')
+    scene = load_scene('scene_step8.json')
     rotate_ray(scene, 0.-4, 0.3, 0.1)
 
 def draw():
@@ -65,22 +62,25 @@ def draw():
 def mult_vectors(v1, v2):
     return PVector(v1.x*v2.x, v1.y*v2.y, v1.z*v2.z)
 
+
 def is_zero(val, tol=1e-6):
     return val > -tol and val < tol 
 
+
 def reflection(v_light, v_normal):
     return 2.0 * v_light.dot(v_normal) * v_normal - v_light
-    
+
+
 def calculate_lighting(scene, obj, pt, pt_normal, ray_origin):
     cos_angle = z_axis.dot(pt_normal)
     if cos_angle > 0:
         pt_normal *= -1.0
-    
+
     col = PVector(0, 0, 0)
     for o in scene['lights']:
         if o['type'] == 'ambient':
             col += mult_vectors(o['color_vector'], obj['color_vector'])
-            
+
         if o['type'] == 'directional':
             v_light = o['dir']
         elif o['type'] == 'point':
@@ -88,8 +88,7 @@ def calculate_lighting(scene, obj, pt, pt_normal, ray_origin):
         else:
             # unknown light type
             continue
-        
-        #print(v_light)
+
         v_light = v_light.normalize()
         diffuse_intensity = pt_normal.dot(v_light)
         if diffuse_intensity > 0.0:
@@ -102,8 +101,8 @@ def calculate_lighting(scene, obj, pt, pt_normal, ray_origin):
     for i in range(3):
         col[i] = constrain(col[i], 0.0, 1.0)
     return color(col[0], col[1], col[2])
-    
-    
+
+
 def get_color_from_string(s):
     arr = [float(trim(v))/255.0 for v in s.split(',')]
     return PVector(arr[0], arr[1], arr[2])
@@ -166,12 +165,10 @@ def process_node(el, intersections):
         
 # return obj hit and hit distance
 def raycast_scene(scene, ray_origin, ray_dir, verbose=False):
-    # find all intersections
     intersections = {}
     if verbose:
         print(ray_origin, ray_dir)
     for i, obj in enumerate(scene['objects']):
-        #pos = PVector(obj['x'], obj['y'], obj['z'])
         if obj['type'] == 'sphere':
             iv = ray_sphere_intersection(ray_origin, ray_dir, obj['pos'], obj['r'], i)
             if verbose: print(obj['pos'], obj['r'], 'intersection:', str(iv))

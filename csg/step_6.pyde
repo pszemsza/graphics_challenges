@@ -4,10 +4,11 @@ import intervals
 
 
 rx = 6.0
-pixel_size = 1
+pixel_size = 4
 
 ray_dist = 8
 ray_dir = PVector(0, 0, 1)
+
 x_axis = PVector(1, 0, 0)
 y_axis = PVector(0, 1, 0)
 z_axis = PVector(0, 0, 1)
@@ -19,11 +20,9 @@ totrot = 1.4
 
 def setup():
     global scene
-    
     colorMode(RGB, 1, 1, 1)
     size(400, 400)
     noStroke()
-    
     scene = load_scene('scene_step6.json')
     rotate_ray(scene, 0, 1.4, 0)
     
@@ -40,52 +39,36 @@ def draw():
         for y in range(0, height, pixel_size):
             
             ray_origin = -1.0 * ray_dir * ray_dist + x_axis * map(x, 0, width, -rx, rx) + y_axis * map(y, 0, height, -rx, rx) 
-            #ray_origin = PVector(map(x, 0, width, -rx, rx), map(y, 0, height, -rx, rx), -8)   # xxxx
             obj, d = raycast_scene(scene, ray_origin, ray_dir)
             
             if obj is None:
                 continue
     
-            hit_pt = ray_origin + ray_dir * d
-            
+            hit_pt = ray_origin + ray_dir * d            
             pt_normal = (hit_pt - obj['pos']).normalize()
-            #print('ray', hit_pt,  ray_origin, ray_dir, d, pt_normal) 
             fill(calculate_lighting(scene, obj, hit_pt, pt_normal, ray_origin))
             rect(x, y, pixel_size, pixel_size)
-            
-    global totrot
-    rot_step = -0.02
-    rotate_ray(scene, 0, rot_step, 0)
-    totrot += rot_step
-    if totrot < -2.8: 
-        redraw = False
-    saveFrame('movie1/movie_####.png')
-    #redraw = False
-
-
-#def calculate_pixel(scene, obj, hit_pt):
-    
+                
     
 # component-wise multiplication
 def mult_vectors(v1, v2):
     return PVector(v1.x*v2.x, v1.y*v2.y, v1.z*v2.z)
 
+
 def reflection(v_light, v_normal):
     return 2.0 * v_light.dot(v_normal) * v_normal - v_light
     
+
 def calculate_lighting(scene, obj, pt, pt_normal, ray_origin):
-    #print(pt_normal)
     cos_angle = z_axis.dot(pt_normal)
     if cos_angle > 0:
         pt_normal *= -1.0
-    #if pt_normal.z > 0.0:
-    #    pt_normal *= -1.0
-    
+  
     col = PVector(0, 0, 0)
     for o in scene['lights']:
         if o['type'] == 'ambient':
             col += mult_vectors(o['color_vector'], obj['color_vector'])
-            #print(o['color_vector'], obj['color_vector'], col)
+    
             
         if o['type'] == 'directional':
             v_light = o['dir']
@@ -95,7 +78,6 @@ def calculate_lighting(scene, obj, pt, pt_normal, ray_origin):
             # unknown light type
             continue
         
-        #print(v_light)
         v_light = v_light.normalize()
         diffuse_intensity = pt_normal.dot(v_light)
         if diffuse_intensity > 0.0:
@@ -111,12 +93,11 @@ def calculate_lighting(scene, obj, pt, pt_normal, ray_origin):
     return color(col[0], col[1], col[2])
     
     
-    
-    
 def get_color_from_string(s):
     arr = [float(trim(v))/255.0 for v in s.split(',')]
     return PVector(arr[0], arr[1], arr[2])
-            
+
+
 def load_scene(path):
     lines = loadStrings(path)
     scene = json.loads(' '.join(lines))
@@ -136,56 +117,38 @@ def load_scene(path):
 
 
 def process_node(el, intersections):
-    #print('\n\nprocess node', el)
     if isinstance(el, int):
-        #print('return ', intersections[el])
         return intersections[el]
         
     if 'op' in el:
         left = process_node(el['left'], intersections)
         right = process_node(el['right'], intersections)
-        #print('childs: ', left, right, el)
         if el['op'] == 'union':
-            #print('return union ', left.union(right))
             return left.union(right)
         if el['op'] == 'intersect':
-            #print('return intersect ', left.intersect(right))
             return left.intersect(right)
         if el['op'] == 'subtract':
-            #print('return subtract ', left.subtract(right))
             return left.subtract(right)
         print('unknown operation: {0}'.format(el['op']))
     
         
 # return obj hit and hit distance
 def raycast_scene(scene, ray_origin, ray_dir):
-    # find all intersections
     intersections = {}
     for i, obj in enumerate(scene['objects']):
-        #pos = PVector(obj['x'], obj['y'], obj['z'])
         if obj['type'] == 'sphere':
             iv = ray_sphere_intersection(ray_origin, ray_dir, obj['pos'], obj['r'], i)
             intersections[i] = intervals.IntervalSet(iv)
             
-    #print('intersections:', intersections)
     ray_intersections = process_node(scene['tree'], intersections)
-    #print('ray intersections: ', ray_intersections)
     ray_intersections.sort()
-
-    
 
     if len(ray_intersections.ivs) == 0:
         return None, 0
-    
-    #intersection_pt = r_origin + ray_dir * ray_intersections.ivs[0].a
-    #print(ray_intersections.ivs[0])
+
     obj = scene['objects'][ray_intersections.ivs[0].ia]
     return obj, ray_intersections.ivs[0].a
  
-    
-def mousePressed():
-    saveFrame('screenshot_####.png')
-
 
 def keyPressed():
     global rx, redraw, pixel_size
@@ -237,16 +200,12 @@ def rotate_ray(scene, ax, ay, az):
     y_axis = m.mul_vector(y_axis)
     z_axis = m.mul_vector(z_axis)
     
-    for obj in scene['lights']:
-        #o['pos'] = m.mul_vector(o['pos'])
-        
+    for obj in scene['lights']:       
         if obj['type'] == 'directional':
             obj['dir'] = m.mul_vector(obj['dir'])
-            #obj['dir'] = PVector(-obj['x'], -obj['y'], -obj['z']).normalize()
                 
         if obj['type'] == 'point':
             obj['pos'] = m.mul_vector(obj['pos'])
-            #obj['pos'] = PVector(obj['x'], obj['y'], obj['z'])
 
 def rotate_scene(scene, ax, ay, az):
     m = Matrix.rotation(ax, ay, az)

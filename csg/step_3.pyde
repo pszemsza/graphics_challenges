@@ -16,7 +16,7 @@ def setup():
     colorMode(RGB, 1, 1, 1)
     size(400, 400)
     noStroke()    
-    scene = load_scene('scene_step4.json')
+    scene = load_scene('scene_step3.json')
 
 
 def draw():
@@ -32,7 +32,6 @@ def draw():
             closest_obj = None
             
             for obj in scene['objects']:
-                #pos = PVector(obj['x'], obj['y'], obj['z'])
                 if obj['type'] != 'sphere':
                     continue
 
@@ -84,7 +83,6 @@ def calculate_lighting(scene, obj, pt, pt_normal, ray_origin):
     for o in scene['lights']:
         if o['type'] == 'ambient':
             col += mult_vectors(o['color_vector'], obj['color_vector'])
-            #print(o['color_vector'], obj['color_vector'], col)
             
         if o['type'] == 'directional':
             v_light = o['dir'] * -1.0
@@ -113,10 +111,6 @@ def calculate_lighting(scene, obj, pt, pt_normal, ray_origin):
 # component-wise multiplication
 def mult_vectors(v1, v2):
     return PVector(v1.x*v2.x, v1.y*v2.y, v1.z*v2.z)
-    
-
-def mousePressed():
-    saveFrame('screenshot_####.png')
 
 
 def ray_sphere_intersection(r_o, r_dir, s_center, s_r):

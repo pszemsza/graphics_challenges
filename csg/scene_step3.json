@@ -1,0 +1,12 @@
+{
+    "lights": [
+        {"type": "ambient", "color": "8,8,8"},
+        {"type": "directional", "color": "128,128,128", "x": 1, "y": -0.4, "z": 0.2},
+        {"type": "point", "color": "0,192,192", "x": 1, "y": 1, "z": 1}
+    ],
+    "objects": [
+        {"type": "sphere", "color": "255,255,255", "x": 0, "y": 0, "z": 5, "r": 3},
+        {"type": "sphere", "color": "255,255,255", "x": -2, "y": 0.5, "z": 3.5, "r": 2},
+        {"type": "sphere", "color": "255,255,255", "x": 1, "y": 3.5, "z": 5, "r": 1}
+    ]
+}
