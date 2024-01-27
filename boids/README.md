@@ -4,7 +4,7 @@
 
 # Step 1. Drawing a boid
 
-Let's start with drawing a single boid. In principle you can use any shape, but it might be easier to see what is going on if you'd use something "directional", so that you can tell which direction a boid is facing. An isosceles triangle is a common choice.
+Let's start with drawing a single boid. In principle you can use any shape, but it might be easier to see what is going on if you'd use something "pointy", so that you can tell which direction a boid is facing. An isosceles triangle is a common choice.
 
 Make sure to consider boid's rotation when drawing!
 
