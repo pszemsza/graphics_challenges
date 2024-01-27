@@ -1,0 +1,21 @@
+{
+    "lights": [
+        {"type": "ambient", "color": "16,16,16"},
+        {"type": "point", "color": "128,128,32", "x": 3, "y": 0, "z": 2},
+        {"type": "directional", "color": "32,32,128", "x": 1, "y": 2, "z": 2}
+    ],
+    "objects": [
+        {"type": "sphere", "x": 0, "y": 0, "z": 0, "r": 5, "color": "255,255,255"},
+        {"type": "sphere", "x": 5, "y": 0, "z": -4, "r": 7, "color": "255,255,255"},
+        {"type": "sphere", "x": 3, "y": -3, "z": 2, "r": 2, "color": "255,255,255"}
+    ],
+    "tree": {
+        "op": "subtract",
+        "left": 0,
+        "right": {
+            "op": "union",
+            "left": 1,
+            "right": 2
+        }
+    }
+}

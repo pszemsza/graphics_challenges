@@ -1,0 +1,16 @@
+{
+    "lights": [
+        {"type": "ambient", "color": "8,8,8"},
+        {"type": "directional", "color": "224,224,224", "x": 1, "y": 1, "z": 1}
+
+    ],
+    "objects": [
+        {"type": "sphere", "x": 0, "y": 0, "z": 0, "r": 5, "color": "255,255,255"},
+        {"type": "sphere", "x": 1, "y": 1, "z": -4, "r": 3, "color": "255,255,255"}
+    ],
+    "tree": {
+        "op": "subtract",
+        "left": 0,
+        "right": 1
+    }
+}

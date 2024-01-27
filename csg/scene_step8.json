@@ -1,0 +1,22 @@
+{
+    "lights": [
+        {"type": "directional", "color": "0,0,200", "x": 1, "y": 0, "z": 1},
+		{"type": "directional", "color": "0,200,0", "x": -1, "y": 1, "z": 1}
+    ],
+    "objects": [
+        {"type": "cube", "x": 0, "y": 0, "z": 0, "size": 2.0, "color": "255,255,255"},
+        {"type": "sphere", "x": 0, "y": 0, "z": 0, "r": 2.9, "color": "255,255,255"},
+		{"type": "sphere", "x": 0, "y": 0, "z": 0, "r": 2.5, "color": "255,255,255"}
+        
+    ],
+    "tree_compressed": "- * 0 1 2",
+    "tree": {
+        "op": "subtract",
+        "left": {
+            "op": "intersect",
+            "left": 0,
+            "right": 1
+        },
+        "right": 2
+    }
+}
