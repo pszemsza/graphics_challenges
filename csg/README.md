@@ -107,8 +107,11 @@ Once you have the rotation working it will be much easier to position your objec
 
 <br/><br/>
 
+https://github.com/pszemsza/graphics_challenges/assets/65168262/86b4a71e-0965-44b7-9ec8-33d004d2e1ee
 
-https://github.com/pszemsza/graphics_challenges/assets/65168262/1f79f039-8645-403e-ab99-88490e7f549d
+https://github.com/pszemsza/graphics_challenges/assets/65168262/5209d257-380a-40dc-bcd3-73001ca2c187
+
+<br/><br/>
 
 
 # Step 7. Cubes
@@ -131,6 +134,12 @@ Your first step should be to write a ray-cuboid intersection function. The CSG t
 </table>
 
 <br/><br/>
+
+
+
+https://github.com/pszemsza/graphics_challenges/assets/65168262/f78da6a3-1547-4749-a8be-5aaf7181e854
+
+
 
 # Step 8. Optimizing CSG tree definition
 
