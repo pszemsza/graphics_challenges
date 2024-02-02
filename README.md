@@ -56,7 +56,7 @@ That being said, you are free to use any language and tools that you prefer. You
     </td>
     <td>
       <div align="center">
-        <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/dce74f4f-666b-4f67-bea2-6b98f0ecedee" width=200px height=200px>
+        <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/5910ac46-66c5-4d34-8495-258e19e23c2c" width=200px height=200px>
       </div>
     </td>
   </tr>
