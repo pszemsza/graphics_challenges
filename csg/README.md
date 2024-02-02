@@ -1,9 +1,3 @@
-
-CSG allows to create complex shapes using geometrical primitives
-
-Let's start with spheres only to simpliofy things (only one ray-intersection, lighting better visible without rotation)
-<br/><br/>
-
 # Step 1. Ray-sphere intersections
 
 Keywords: _ray-sphere intersection_, _ray casting_
@@ -31,6 +25,17 @@ Finally, you may want to add zoom in/out feature.
 
 <br/><br/>
 
+<table>
+  <tr>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/08a600be-ac7d-488d-93a5-11614901dab9" width=200px height=200px></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/63d46cd1-5c47-4d28-bb97-65414c0adbd1" width=200px height=200px></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/6017ff76-b391-4c3b-8b7a-c55a0c799db5" width=200px height=200px></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/ac89c026-991d-434f-9307-dab2092bbd56" width=200px height=200px></td>
+  </tr> 
+</table>
+
+<br/><br/>
+
 # Step 2. Lightning
 
 Keywords: _ambient light_, _directional light_, _diffuse lighting_, _sphere normal vector_, _shading models_, _Phong model_
@@ -39,11 +44,22 @@ Now we will add some lightning, so that our scene looks more realistic. Lightnin
 
 In general, you will need a normal (vector) to the sphere at the intersection point, and the vector pointing in the direction of the light. Fortunately for us, they are both super easy to calculate.
 
+<br/>
+
+![screenshot_1791](https://github.com/pszemsza/graphics_challenges/assets/65168262/dd0c5b05-652b-4399-a7ef-47268de434c3)
 <br/><br/>
 
 # Step 3. Scene loading
 
 Let's now add scene loading from a file. You want to be able to define multiple lights (of every type) and multiple spheres (with different positions, radii, and colors). You will also need to adjust your ray casting routine to find intersections with all the spheres in the scene.
+
+<table>
+  <tr>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/586f2485-5939-4931-b886-ab99db439aab" width=200px height=200px></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/627d69b5-0167-4a68-9d84-7beb365a2ae3" width=200px height=200px></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/974f6c52-3b03-46e5-8408-b591c0cb13e1" width=200px height=200px></td>
+  </tr> 
+</table>
 
 <br/><br/>
 
@@ -71,11 +87,13 @@ I would also suggest to implement this as a library and add a lot of unit tests 
 
 # Step 5. Raycasting CSG objects
 
-We are now ready to 
-
 First, you need to add a tree definition to your scene file. Internal nodes will specify the binary operation, and leaves - a single geometrical primitive. As you already have a list of primitives defined, you can simply use their indices when defining a tree. (I suggest to use as simple format for defining the tree as possible, at least for now. Later on we will work on a more efficient method.)
 
 Now, for every casted ray you will need to find intersections with all the primitives. Then you can climb up the tree, at every node combining intervals from the child nodes using the specified operation. Once you get to the root you have a final set of intervals, so you only need to find the closest interval. It will give you the distance to the closest intersection, and the index of the corresponding primitive - which is all you need!
+
+<br/>
+
+![screenshot_0400](https://github.com/pszemsza/graphics_challenges/assets/65168262/54af9086-a401-4148-a589-95f0b21d6bbd)
 
 <br/><br/>
 
@@ -89,6 +107,13 @@ Once you have the rotation working it will be much easier to position your objec
 
 <br/><br/>
 
+https://github.com/pszemsza/graphics_challenges/assets/65168262/86b4a71e-0965-44b7-9ec8-33d004d2e1ee
+
+https://github.com/pszemsza/graphics_challenges/assets/65168262/5209d257-380a-40dc-bcd3-73001ca2c187
+
+<br/><br/>
+
+
 # Step 7. Cubes
 
 Keywords: _Axis-aligned bounding box (AABB)_, _Oriented bounding box (OBB)_,
@@ -99,13 +124,31 @@ Note that in computer graphics nomenclature cuboids are often referred to as bou
 
 Your first step should be to write a ray-cuboid intersection function. The CSG tree calculations remain mostly unchanged. Finally, you will need to calculate proper normals at the intersection point. While this is easy for spheres (you only need the intersection point and the sphere's origin), for cuboids you need to know which face the ray intersected.
 
+</br>
+
+<table>
+  <tr>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/95e929e5-7484-4954-aee7-5724e5cb5413" width=200px height=200px></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/fe1b76cc-2ef7-4b3b-82b1-c11f801020a0" width=200px height=200px></td>
+  </tr> 
+</table>
+
 <br/><br/>
+
+
+
+https://github.com/pszemsza/graphics_challenges/assets/65168262/f78da6a3-1547-4749-a8be-5aaf7181e854
+
+
 
 # Step 8. Optimizing CSG tree definition
 
 Let's now take a step back and look at your CSG tree definition. Chance is that you used a human friendly like JSON. While this is fine for simple scenes, it may quickly become unwieldy if you want to add more and more objects due to its verbosity. Thus, it might be practical to employ a more compact format. I suggest a recursive definition, in which a node is represented either by index of the geometric primitive (for leave nodes), or by the sign of the operation (e.g. +, -, *), followed by the definition of the left and right subtrees (for the internal nodes). For example, $+ 2 * 0 1$ would represent a union of primitive 2 with the intersection of primitives 0 and 1. You can also use some other existing notation (for example Reverse Polish notation), or try to come up with your own.
 
 In either case, being able to define the scene quickly and quickly rearrange the tree if needed will make experimenting much easier.
+
+
+
 
 # Next steps:
 
