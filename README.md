@@ -29,58 +29,68 @@ That being said, you are free to use any language and tools that you prefer. You
 <table>
   <tr>
     <td>
-      <h3>Constructive Solid Geometry</h3>
+      <h3><a href='csg'>Constructive Solid Geometry</a></h3>
       Constructive Solid Geometry (CSG) is a modeling technique in computer graphics that represents complex shapes by combining simple geometric shapes (spheres, cubes, etc.) using Boolean operations. It allows to create intricate and detailed objects by combining and manipulating basic shapes in a hierarchical manner.
     </td>
     <td width=400px>
       <div align="center">
-        <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/4b6b8188-d61b-4156-b5df-7304b23539b3" width=200px height=200px>
+        <a href='csg'>
+          <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/4b6b8188-d61b-4156-b5df-7304b23539b3" width=200px height=200px>
+        </a>
       </div>
     </td>
   </tr> 
   <tr>
     <td>
-      <h3>Boids</h3>
+      <h3><a href='boids'>Boids</a></h3>
       Boids is an artificial life program simulating the flocking behavior. A couple of simple rules governing individual boids behavior yield realistically looking emergent behavior.
     </td>
     <td>
       <div align="center">
-        <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/6909f716-8506-4c04-91e2-b12d20545cd6" width=200px height=200px>
+        <a href='boids'>
+          <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/6909f716-8506-4c04-91e2-b12d20545cd6" width=200px height=200px>
+        </a>
       </div>
     </td>
   </tr> 
   <tr>
     <td>
-      <h3>Strange attractors</h3>
+      <h3><a href='strange_attractors'>Strange attractors</a></h3>
       Strange attractors are a family of fractals characterized by their complex and infinitely intricate shapes, despite being described by relatively simple equations. These fractals emerge from the dynamics of chaotic systems.
     </td>
     <td>
       <div align="center">
-        <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/5910ac46-66c5-4d34-8495-258e19e23c2c" width=200px height=200px>
+        <a href='strange_attractors'>
+          <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/5910ac46-66c5-4d34-8495-258e19e23c2c" width=200px height=200px>
+        </a>
       </div>
     </td>
   </tr>
-  <tr>
-    <td>
-      <h3>Edge detection</h3>
-      A byte sized project demonstrating convolution filters used for edge detection.
-    </td>
-    <td>
-      <div align="center">
-        <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/07617690-3497-40f4-a49c-217a71daa537" height=200px>
-      </div>
-    </td>
-  </tr> 
    <tr>
     <td>
-      <h3>3D renderer (work in progress)</h3>
-      Creating a simple 3D renderer using only a "draw pixel" method. We will progress through drawing lines, projecting 3D objects into 2D screen to applying a lighting model.
+      <h3><a href='3d_renderer'>3D renderer (work in progress)</a></h3>
+      A simple 3D renderer implemented from scratch, using only a "draw pixel" method. The renderer features scene rotation, a lightning model, ortographic and perspective projection, depth buffer, and others.
     </td>
     <td>
       <div align="center">
-        <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/026dece3-f036-4560-8b5d-7049493d942f" height=200px>
+        <a href='3d_renderer'>
+          <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/026dece3-f036-4560-8b5d-7049493d942f" height=200px>
+        </a>
       </div>
     </td>
      
   </tr>   
+  <tr>
+    <td>
+      <h3><a href='edge_detection'>Edge detection</a></h3>
+      A bite-sized project demonstrating convolution filters used for edge detection.
+    </td>
+    <td>
+      <div align="center">
+        <a href='edge_detection'>
+          <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/703fffa1-47ad-4895-8b9d-e6e5f79ca04e" height=200px>
+        </a>
+      </div>
+    </td>
+  </tr> 
 </table>
