@@ -1,5 +1,11 @@
 # Computer Graphics Challenges
 
+## What it is?
+
+A collection of computer graphics-related projects ideas. Intended for bored programmers looking for a small side project, and for people interested in learning more about the computer graphics in general.
+
+Each project consists of a series of steps designed to guide you through the implementation process. The steps also include images and/or videos presenting the desired end result.
+
 ## Projects
 
 <table>
@@ -70,12 +76,6 @@
     </td>
   </tr> 
 </table>
-
-## What it is?
-
-A collection of computer graphics-related projects ideas. Intended for bored programmers looking for a small side project, and for people interested in learning more about the computer graphics in general.
-
-Each project consists of a series of steps designed to guide you through the implementation process. The steps also include images and/or videos presenting the desired end result.
 
 ## What it isn't?
 
