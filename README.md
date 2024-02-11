@@ -60,8 +60,20 @@ Each project consists of a series of steps designed to guide you through the imp
         </a>
       </div>
     </td>
-     
-  </tr>   
+  </tr>  
+   <tr>
+    <td>
+      <h3><a href='plane_boarding/README.md'>Plane boarding</a></h3>
+      Simulating and visualizing plane boarding using different boarding methods.
+    </td>
+    <td>
+      <div align="center">
+        <a href='plane_boarding/README.md'>
+          <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/5292e2e2-4c0c-4cb5-a5e3-34339f6dc80e" width=200px height=200px>
+        </a>
+      </div>
+    </td>
+  </tr> 
   <tr>
     <td>
       <h3><a href='edge_detection/README.md'>Edge detection</a></h3>
