@@ -35,3 +35,11 @@ As a final touch, you may want to add a boarding zones legend, display boarding 
 
 # Sample code
 For the sample code for both the simulations and the visualization please see the [plane boarding repo](https://github.com/pszemsza/plane_boarding).
+
+# Sample visualization
+
+https://github.com/pszemsza/plane_boarding/assets/65168262/281f82f3-f9af-48ff-b16f-e264ff6e0c60
+
+https://github.com/pszemsza/plane_boarding/assets/65168262/007e2465-bbcc-4318-a38f-57f55ea2a8b4
+
+https://github.com/pszemsza/plane_boarding/assets/65168262/c6347151-4f33-409e-81ad-2828d4ec9ed6
