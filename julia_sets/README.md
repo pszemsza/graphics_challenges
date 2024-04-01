@@ -11,19 +11,34 @@ Of course, we'll also need to display complex numbers on a screen, requiring a m
 # Step 3. Drawing the fractal
 Let's dive into rendering our first fractal! Start by selecting your parameter $c$ (a good starting point could be c = 0.33 + 0.12i). Then, for each pixel on the screen, map it to its corresponding complex number and apply the Julia set formula iteratively. If the magnitude of the resulting number exceeds a certain threshold, e.g. 2, halt the iteration. When reaching the maximum number of iterations, mark the point as part of the Julia set by drawing a pixel.
 
-# Step 4. Choosing parameter $c$
-Now experiment with different values of a parameter $c$. You can use mouse click position to set the new value. 
+<img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/be00d3b5-ffe3-4ca2-943e-86286cc2ee0e" height="250"/>
 
-# Step 5. Shading
+# Step 4. Shading
 Let's now add more depth and detail to our renders by incorporating shading. You can use the number of iterations needed for the sequence to escape to infinity as a guide for coloring the fractal. For example, you could draw the Julia set with black, and its surrounding area with a linear gradient of a chosen color.
 
+<img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/0039b82a-1c14-47c8-a33d-0da32ec56270" height="250"/>
+
+# Step 5. Choosing parameter $c$
+Now experiment with different values of a parameter $c$. You can use mouse click position to set the new value. 
+
+<table>
+  <tr>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/c0f9f0e9-89d8-4ef6-86fc-c5285179070d" width="250"/></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/f70764f7-2fda-4c34-824d-2dbeea45214f" width="250"/></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/14892f4e-ce46-4ac3-b962-7ec6068c1576" width="250"/></td>
+    <td><img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/9fa3d5d5-94fa-48ef-a57e-6156ee281a40" width="250"/></td>
+  </tr>
+</table>
+      
 # Step 6. Zooming in and out
 To better study the fractal nature of the Julia sets it is useful to have a capability to zoom in into a chosen area. Use mouse and/or keyboard controls to zoom in and out,  centering the image around the selected point, and moving it up/down/left/right.
 
+<img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/8bed57eb-8d88-4d13-bde1-098c273c8a4e" height="250"/>
+
 # Next steps
 
-- enhance coloring. You could use a multi-color gradient to add more contrast and depth to your images
+* Experiment with colors - you could use a multi-color gradient to add more contrast and depth to your images, play with saturation and/or brightness, add some randomness, etc.
 
-- Experiment with alternative fractal formulas - you can try using formulas, for example $z^2+z-c$ or $z^3+c$ to generate different fractal patterns and structures
+* Experiment with alternative fractal formulas - you can try using formulas, for example $z^2+z-c$ or $z^3+c$ to generate different fractal patterns and structures,
 
-- Adapt for GPU - drawing Julia sets can be computationally intensive, especially with larger screens and higher iteration counts. Consider implementing parallelization or utilizing GPU acceleration to accelerate the rendering process.
+* Adapt for GPU - drawing Julia sets can be computationally intensive, especially with larger screens and higher iteration counts. Consider implementing parallelization or utilizing GPU acceleration to accelerate the rendering. process.
