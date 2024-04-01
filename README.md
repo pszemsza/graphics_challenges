@@ -48,6 +48,19 @@ Each project consists of a series of steps designed to guide you through the imp
       </div>
     </td>
   </tr>
+  <tr>
+    <td>
+      <h3><a href='julia_sets/README.md'>Julia sets</a></h3>
+      Explore Julia sets, a family of fractals emerging from iterating a simple equation in the complex numbers plane.
+    </td>
+    <td>
+      <div align="center">
+        <a href='julia_sets/README.md'>
+          <img src="https://github.com/pszemsza/graphics_challenges/assets/65168262/2387ca6e-ec74-4fa7-a550-19a161fe9731" width=200px height=200px>
+        </a>
+      </div>
+    </td>
+  </tr>
    <tr>
     <td>
       <h3><a href='3d_renderer/README.md'>3D renderer (work in progress)</a></h3>
